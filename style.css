@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #ffcce6, #ffb3d9, #ff99cc, #ff80bf);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.photo-frame {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  font-weight: bold;
+  color: #b30059;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+.photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1;
+  border: 3px solid white;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.1) rotate(5deg);
+  z-index: 10;
+}
+
+/* Позиции вокруг центра */
+.rotate1  { top: 0%;    left: 50%; transform: translate(-50%, -50%) rotate(-10deg); }
+.rotate2  { top: 15%;   left: 80%; transform: translate(-50%, -50%) rotate(5deg); }
+.rotate3  { top: 40%;   left: 95%; transform: translate(-50%, -50%) rotate(-15deg); }
+.rotate4  { top: 70%;   left: 95%; transform: translate(-50%, -50%) rotate(20deg); }
+.rotate5  { top: 90%;   left: 75%; transform: translate(-50%, -50%) rotate(-5deg); }
+.rotate6  { top: 100%;  left: 50%; transform: translate(-50%, -50%) rotate(15deg); }
+.rotate7  { top: 90%;   left: 25%; transform: translate(-50%, -50%) rotate(-10deg); }
+.rotate8  { top: 70%;   left: 5%;  transform: translate(-50%, -50%) rotate(5deg); }
+.rotate9  { top: 40%;   left: 5%;  transform: translate(-50%, -50%) rotate(-15deg); }
+.rotate10 { top: 15%;   left: 20%; transform: translate(-50%, -50%) rotate(20deg); }
+.rotate11 { top: 10%;   left: 35%; transform: translate(-50%, -50%) rotate(-5deg); }
+.rotate12 { top: 5%;    left: 65%; transform: translate(-50%, -50%) rotate(15deg); }
+
+.poem-section, .message-section {
+  margin-top: 80px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poem-section h2, .message-section h2 {
+  color: #99004d;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.poem-section p {
+  font-size: 22px;
+  line-height: 1.8;
+  color: #4b2c3d;
+}
+
+@media (max-width: 900px) {
+  .photo-frame {
+    width: 100%;
+    height: 600px;
+  }
+  
+  .photo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .center-text {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .center-text {
+    font-size: 36px;
+  }
+  
+  .poem-section, .message-section {
+    padding: 20px 15px;
+  }
+  
+  .poem-section p {
+    font-size: 18px;
+  }
+}
+.photo {
+  transition: all 0.3s ease;
+  animation-play-state: running;
+}
+
+.photo:hover {
+  transform: scale(1.1) !important;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+}
+/* Добавьте в конец style.css */
+
+/* Шрифт */
+.center-text {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 72px !important;
+  color: #ff1493 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Сердечки */
+#hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden; /* Важно! Исправляет накопление в углу */
+}
+
+.heart-fall {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  background-size: contain;
+  animation: falling linear forwards;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-10%) translateX(var(--start-x)) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(var(--end-x)) rotate(360deg);
+    opacity: 0;
+  }
+}
+/* Обновленный стиль для .center-text (добавьте в конец CSS) */
+.center-text {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-variant: small-caps;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 68px;
+  color: #d63384;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+/* Ваши текущие стили для poem-section (уже есть в коде) */
+.poem-section, .message-section {
+  margin-top: 80px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poem-section h2 {
+  color: #99004d;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.poem-section p {
+  font-size: 22px;
+  line-height: 1.8;
+  color: #4b2c3d;
+}
+.photo-frame {
+  margin-bottom: 100px; /* чтобы был отступ перед стихами */
+}
